@@ -1,4 +1,4 @@
-package CoreGame;
+package core;
 
 import java.awt.Image;
 

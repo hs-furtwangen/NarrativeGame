@@ -7,8 +7,8 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 
-import SceneGame.SceneGame;
-import CoreGame.CoreGame;
+import core.CoreGame;
+import scene.SceneGame;
 
 public class StartGame extends StateBasedGame{
 	

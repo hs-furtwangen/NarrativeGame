@@ -1,4 +1,4 @@
-package CoreGame;
+package core;
 
 public class Environment {
 
