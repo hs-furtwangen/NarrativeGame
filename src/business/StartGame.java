@@ -27,6 +27,8 @@ public class StartGame extends StateBasedGame{
 	}
 	
 	public static void main(String[] args) {
+		logger.info("Application wird started!");
+		
 		try {
 			AppGameContainer app = new AppGameContainer(new StartGame("Nara"));
 			app.setDisplayMode(C.SCREEN_WIDTH, C.SCREEN_HEIGHT, false);
