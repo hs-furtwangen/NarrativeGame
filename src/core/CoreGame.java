@@ -1,16 +1,5 @@
 package core;
 
-import java.io.File;
-import java.io.IOException;
-
-import javax.sound.sampled.AudioFormat;
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-import javax.sound.sampled.DataLine;
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.newdawn.slick.GameContainer;
@@ -41,19 +30,12 @@ public class CoreGame extends BasicGameState {
 	@Override
 	public void init(GameContainer container, StateBasedGame sbg) throws SlickException {
 		
-
-		
 		logger.info("Initializing CoreGame");
 		map = new Map(sbg);
 		player = new Player(map);
 		alphamap = new Image(C.ALPHA_MAP);
 		artefactesImg = new Image(C.IMAGES_PATH+"artefact.png");
-		soundEngine = SoundEngineHandler.getSoundEngine();
-		soundEngine.start();
-		soundEngine.updatePosition(player.posX, player.posY);
 		n = 0;
-		logger.info("Initializing LogicalPlayer");
-		LogicalPlayer.init();
 	}
 
 	@Override
@@ -77,7 +59,9 @@ public class CoreGame extends BasicGameState {
 	@Override
 	public void render(GameContainer container, StateBasedGame sbg, Graphics g) throws SlickException {
 		// TODO scale down
+//		g.translate(-C.SCREEN_WIDTH/2, -C.SCREEN_HEIGHT/2);
 //		g.scale(2, 2);
+//		g.translate(C.SCREEN_WIDTH/8, C.SCREEN_HEIGHT/8);
 		
 		// render animation
 		n = (n + 1) % C.ANIMATIONTEMPO;
@@ -107,6 +91,15 @@ public class CoreGame extends BasicGameState {
 		}
 	}
 
+	@Override
+	public void enter(GameContainer container, StateBasedGame game) throws SlickException {
+		logger.info("Enter CoreGame");
+		super.enter(container, game);
+		soundEngine = SoundEngineHandler.getSoundEngine();
+		soundEngine.playWind();
+		soundEngine.updatePosition(player.posX, player.posY);
+	}
+	
 	@Override
 	public int getID() {
 		return 0;

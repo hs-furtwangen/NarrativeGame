@@ -23,13 +23,15 @@ public class StartGame extends StateBasedGame{
 		// load Games
 		this.addState(new CoreGame());
 		this.addState(new SceneGame(1)); // red
-//		this.addState(new SceneGame(2)); // green
+		this.addState(new SceneGame(2)); // green
 //		this.addState(new SceneGame(3)); // blue
 		
 	}
 	
 	public static void main(String[] args) {
 		logger.info("Starting up application");
+		logger.info("Initializing LogicalPlayer");
+		LogicalPlayer.init();
 		
 		try {
 			AppGameContainer app = new AppGameContainer(new StartGame("Nara"));
