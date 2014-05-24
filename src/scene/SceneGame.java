@@ -143,13 +143,11 @@ public class SceneGame extends BasicGameState {
 	public void init(GameContainer container, StateBasedGame sbg) throws SlickException {
 		logger.info("Initialisiere SceneGame ID:" + id);
 		currentImage = new Image(C.IMAGES_PATH + "scene1.png");
-
 	}
 
 	@Override
 	public void update(GameContainer container, StateBasedGame sbg, int delta) throws SlickException {
 		LogicalPlayer.archievedArtefact(id);
-
 		Input input = container.getInput();
 		world.step();
 
@@ -172,12 +170,10 @@ public class SceneGame extends BasicGameState {
 
 	@Override
 	public void render(GameContainer container, StateBasedGame sbg, Graphics g) throws SlickException {
-
 		n = (n + 1) % C.ANIMATIONTEMPO;
-		if (n == 0) {
+		if (n == 0){
 			player.incFrame();
 		}
-
 		g.drawImage(currentImage, 0, 0);
 		drawPlayer(body, g);
 		for (int l = 0; l < colliders.length; l++) {
@@ -192,6 +188,7 @@ public class SceneGame extends BasicGameState {
 	 * @param g
 	 */
 	public void drawBody(Body body, Graphics g) {
+		
 		Box box = (Box) body.getShape();
 		Vector2f[] pts = box.getPoints(body.getPosition(), body.getRotation());
 
@@ -200,6 +197,7 @@ public class SceneGame extends BasicGameState {
 		Vector2f v3 = pts[2];
 		Vector2f v4 = pts[3];
 
+		
 		g.setColor(Color.black);
 		g.drawLine((int) v1.x, (int) v1.y, (int) v2.x, (int) v2.y);
 		g.drawLine((int) v2.x, (int) v2.y, (int) v3.x, (int) v3.y);
