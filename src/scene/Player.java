@@ -19,7 +19,7 @@ public class Player {
 		posX = 0;
 		posY = 0;
 		try {
-			image = new Image(C.PATH+"player_leftright.png");
+			image = new Image(C.IMAGES_PATH+"player_leftright.png");
 		} catch (SlickException e) {
 			logger.error(e.getMessage());
 		}

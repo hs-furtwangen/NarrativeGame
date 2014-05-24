@@ -27,7 +27,7 @@ public class Player {
 		posX = 150;
 		posY = 150;
 		try {
-			image = new Image(C.PATH+"char.png");
+			image = new Image(C.IMAGES_PATH+"char.png");
 		} catch (SlickException e) {
 			logger.error(e.getMessage());
 		}

@@ -13,5 +13,6 @@
 	<classpathentry kind="lib" path="ressources/apache-log4j-2.0-rc1-bin/log4j-api-2.0-rc1.jar"/>
 	<classpathentry kind="lib" path="ressources/apache-log4j-2.0-rc1-bin/log4j-core-2.0-rc1.jar"/>
 	<classpathentry kind="lib" path="ressources/slick.jar"/>
+	<classpathentry kind="lib" path="ressources/phys2d-060408.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

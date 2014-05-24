@@ -17,6 +17,7 @@ public class CoreGame extends BasicGameState {
 
 	private Map map;
 	private Player player;
+	private SoundEngine soundEngine;
 	private int n;
 
 	public CoreGame() {
@@ -27,6 +28,8 @@ public class CoreGame extends BasicGameState {
 		logger.info("Initializing CoreGame");
 		map = new Map(sbg);
 		player = new Player(map);
+		soundEngine = new SoundEngine();
+		soundEngine.start();
 		n = 0;
 	}
 

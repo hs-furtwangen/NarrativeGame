@@ -21,7 +21,7 @@ public class StartGame extends StateBasedGame{
 	@Override
 	public void initStatesList(GameContainer container) throws SlickException {
 		// load Games
-		this.addState(new CoreGame());
+//		this.addState(new CoreGame());
 		this.addState(new SceneGame(1)); // red
 		this.addState(new SceneGame(2)); // green
 		this.addState(new SceneGame(3)); // blue

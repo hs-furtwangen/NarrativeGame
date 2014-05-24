@@ -10,13 +10,20 @@ public abstract class C {
 	public static int STEPWIDTH = 2;
 	public static int JUMP_HEIGHT = 80;
 	
-	public static String PATH = "ressources/images/";
+	
+	
+	public static String IMAGES_PATH = "ressources/images/";
+	public static String SOUNDS_PATH = "ressources/sounds/";
+	
 	public static String PASS_MAP = "ressources/maps/pass_map.png";
 	public static String IMG_MAP = "ressources/maps/map.png";
-	public static int MAP_WIDTH = 10;
-	public static int MAP_HEIGHT = 5;
 	
-	public static char NONPASSABLE = 'x';
+	public static String SOUND_WIND = "144083__bosk1__wind-houling-1.wav";
+	public static String SOUND_DOORCLOSING = "104529__skyumori__door-close-sqeuak-03.wav";
+	public static String SOUND_COSMICD = "133008__cosmicd__annulet-of-absorption.wav";
+	public static String SOUND_METALPINGS = "135784__timbre__echoing-metal-pings.flac";
+	
+	
 	public static int ANIMATIONTEMPO = 8;
 	
 	/* OFFSET FOR COLLISION BOX */
@@ -25,4 +32,10 @@ public abstract class C {
 	public static int YOFFSET_TOP = 0;
 	public static int YOFFSET_BOTTOM = 7;
 	
+	/* PHYSICS */
+
+	public static float FORCE_TOPDOWN = 3000f;
+	public static float FORCE_RIGHTLEFT = 2000f;
+	public static float FORCE_GRAVITY = 1000f;
+	public static float PLAYERMASS = 1f;
 }
