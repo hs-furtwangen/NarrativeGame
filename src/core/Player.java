@@ -47,6 +47,7 @@ public class Player {
 		if(map.isPassable(posX,posY+C.STEPWIDTH)){
 			isUp = false;
 			posY += C.STEPWIDTH;
+			updatePosition();
 		}
 	}
 	
@@ -54,6 +55,7 @@ public class Player {
 		if(map.isPassable(posX,posY-C.STEPWIDTH)){
 			isUp = true;
 			posY -= C.STEPWIDTH;
+			updatePosition();
 		}
 	}
 	
@@ -62,6 +64,7 @@ public class Player {
 			isRight = true;
 			isUp = false;
 			posX += C.STEPWIDTH;
+			updatePosition();
 		}
 	}
 
@@ -70,7 +73,12 @@ public class Player {
 			isRight = false;
 			isUp = false;
 			posX -= C.STEPWIDTH;
+			updatePosition();
 		}
+	}
+	
+	private void updatePosition(){
+		SoundEngineHandler.getSoundEngine().updatePosition(posX, posY);
 	}
 	
 	public void incFrame(){
