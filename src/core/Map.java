@@ -3,8 +3,10 @@ package core;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.lwjgl.util.Color;
+import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.state.StateBasedGame;
 
 import business.C;
 
@@ -13,8 +15,10 @@ public class Map {
 	private static Logger logger = LogManager.getRootLogger();
 	private Image pass_map;
 	private Image img_map;
+	private StateBasedGame sbg;
 
-	public Map() {
+	public Map(StateBasedGame sbg) {
+		this.sbg = sbg;
 		loadPass();
 		loadImg();
 	}
@@ -66,27 +70,30 @@ public class Map {
 			if (compareTwoRGBs(pass_map.getColor(x, y), red)) {
 				// TODO start scene 1
 				logger.info("Start scene RED");
+				sbg.enterState(1);
 				return false;
-			} 
+			}
 			if (compareTwoRGBs(pass_map.getColor(x, y), green)) {
 				// TODO start scene 2
 				logger.info("Start scene GREEN");
+				sbg.enterState(2);
 				return false;
-			} 
+			}
 			if (compareTwoRGBs(pass_map.getColor(x, y), blue)) {
 				// TODO start scene 3
 				logger.info("Start scene BLUE");
+				sbg.enterState(3);
 				return false;
-			} 
+			}
 			if (compareTwoRGBs(pass_map.getColor(x, y), black)) {
 				return false;
 			}
-			
+
 		} catch (ArrayIndexOutOfBoundsException e) {
 			// pixel out of range
 			return false;
 		}
-		
+
 		return true;
 	}
 

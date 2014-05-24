@@ -20,14 +20,14 @@ public class CoreGame extends BasicGameState {
 	private int n;
 
 	public CoreGame() {
-		map = new Map();
-		player = new Player(map);
-		n = 0;
 	}
 
 	@Override
 	public void init(GameContainer container, StateBasedGame sbg) throws SlickException {
 		logger.info("Initializing CoreGame");
+		map = new Map(sbg);
+		player = new Player(map);
+		n = 0;
 	}
 
 	@Override
