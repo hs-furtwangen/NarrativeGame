@@ -1,0 +1,13 @@
+<xml>
+<boxes>
+
+<box PosX="320" posY="14" width="640" height="28"></box>
+<box PosX="626" posY="240" width="28" height="480"></box>
+<box PosX="320" posY="413" width="640" height="136"></box>
+
+<box PosX="385" posY="275" width="64" height="32"></box>
+<box PosX="386" posY="305" width="118" height="28"></box>
+<box PosX="386" posY="332" width="170" height="28"></box>
+
+</boxes>
+</xml>

@@ -4,8 +4,8 @@ public abstract class C {
 	
 	public static int TILE_WIDTH = 16;
 	public static int TILE_HEIGHT = 16;
-	public static int SCREEN_WIDTH = 800;
-	public static int SCREEN_HEIGHT = 600;
+	public static int SCREEN_WIDTH = 640;
+	public static int SCREEN_HEIGHT = 480;
 	public static int FPS = 30;
 	public static int STEPWIDTH = 2;
 	public static int JUMP_HEIGHT = 80;
@@ -34,8 +34,8 @@ public abstract class C {
 	
 	/* PHYSICS */
 
-	public static float FORCE_TOPDOWN = 3000f;
-	public static float FORCE_RIGHTLEFT = 2000f;
+	public static float FORCE_TOPDOWN = 225f;
+	public static float FORCE_RIGHTLEFT = 20f;
 	public static float FORCE_GRAVITY = 1000f;
-	public static float PLAYERMASS = 1f;
+	public static float PLAYERMASS = 0.01f;
 }
