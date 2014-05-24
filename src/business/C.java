@@ -4,8 +4,8 @@ public abstract class C {
 	
 	public static int TILE_WIDTH = 16;
 	public static int TILE_HEIGHT = 16;
-	public static int SCREEN_WIDTH = 600;
-	public static int SCREEN_HEIGHT = 400;
+	public static int SCREEN_WIDTH = 800;
+	public static int SCREEN_HEIGHT = 600;
 	public static int FPS = 30;
 	public static int STEPWIDTH = 2;
 	public static int JUMP_HEIGHT = 80;

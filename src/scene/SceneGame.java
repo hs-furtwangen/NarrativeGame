@@ -104,7 +104,9 @@ public class SceneGame extends BasicGameState {
 				walkedLeft = false;
 				walkedRight = true;
 			} else {
-				// do nothing!
+				player.posX = 0;
+				player.posY = 0;
+				sbg.enterState(0);
 			}
 		} else {
 			// do nothing!
