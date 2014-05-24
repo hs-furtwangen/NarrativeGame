@@ -46,24 +46,32 @@ public class Map {
 	}
 
 	public boolean isPassable(int x, int y) {
-		if (!checkColorsForPixel(x, y)) {
-			logger.info("Point left top failed");
-			return false;
+		
+		// Use this bFlag to check all point of being in scenetrigger
+		boolean bFlag = true;
+		
+		logger.debug("Point left top checked. Position: "+x+","+y);
+		if (!checkColorsForPixel(x + C.XOFFSET_LEFT, y + C.YOFFSET_TOP)) {
+			logger.debug("Point left top failed. Position: "+x+","+y);
+			bFlag = false;
 		}
-		if (!checkColorsForPixel(x + C.TILE_WIDTH, y)) {
-			logger.info("Point right top failed");
-			return false;
+		logger.debug("Point right top checked. Position: "+ (x + C.TILE_WIDTH)+","+y);
+		if (!checkColorsForPixel(x + C.TILE_WIDTH - C.XOFFSET_RIGHT, y + C.YOFFSET_TOP )) {
+			logger.debug("Point right top failed. Position: "+ (x + C.TILE_WIDTH)+","+y);
+			bFlag = false;
 		}
-		if (!checkColorsForPixel(x, y + C.TILE_HEIGHT)) {
-			logger.info("Point left button failed");
-			return false;
+		logger.debug("Point left button checked. Position: "+x+","+(y + C.TILE_HEIGHT));
+		if (!checkColorsForPixel(x + C.XOFFSET_LEFT, y + C.TILE_HEIGHT - C.YOFFSET_BOTTOM)) {
+			logger.debug("Point left button failed. Position: "+x+","+(y + C.TILE_HEIGHT));
+			bFlag = false;
 		}
-		if (!checkColorsForPixel(x + C.TILE_WIDTH, y + C.TILE_HEIGHT)) {
-			logger.info("Point right button failed");
-			return false;
+		logger.debug("Point right button checked. Position: "+(x + C.TILE_WIDTH)+","+(y + C.TILE_HEIGHT));
+		if (!checkColorsForPixel(x + C.TILE_WIDTH  - C.XOFFSET_RIGHT, y + C.TILE_HEIGHT - C.YOFFSET_BOTTOM)) {
+			logger.debug("Point right button failed. Position: "+(x + C.TILE_WIDTH)+","+(y + C.TILE_HEIGHT));
+			bFlag = false;
 		}
 
-		return true;
+		return bFlag;
 
 	}
 
@@ -104,6 +112,7 @@ public class Map {
 	}
 
 	private boolean compareTwoRGBs(org.newdawn.slick.Color cSlick, Color color) {
+//		logger.debug("R:"+cSlick.getRed()+" G:"+cSlick.getGreen()+" B:"+cSlick.getBlue()+" | R:"+color.getRed()+" G:"+color.getGreen()+" B:"+color.getBlue());
 		if (cSlick.getRed() == color.getRed() && cSlick.getGreen() == color.getGreen() && cSlick.getBlue() == color.getBlue()) {
 			return true;
 		} else {

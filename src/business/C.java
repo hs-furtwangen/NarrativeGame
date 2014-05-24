@@ -12,11 +12,17 @@ public abstract class C {
 	
 	public static String PATH = "ressources/images/";
 	public static String PASS_MAP = "ressources/maps/pass_map.png";
-	public static String IMG_MAP = "ressources/maps/pass_map.png";
+	public static String IMG_MAP = "ressources/maps/map.png";
 	public static int MAP_WIDTH = 10;
 	public static int MAP_HEIGHT = 5;
 	
 	public static char NONPASSABLE = 'x';
 	public static int ANIMATIONTEMPO = 8;
-
+	
+	/* OFFSET FOR COLLISION BOX */
+	public static int XOFFSET_LEFT = 3;
+	public static int XOFFSET_RIGHT = 3;
+	public static int YOFFSET_TOP = 0;
+	public static int YOFFSET_BOTTOM = 7;
+	
 }

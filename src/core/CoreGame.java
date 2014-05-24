@@ -46,21 +46,20 @@ public class CoreGame extends BasicGameState {
 		} else {
 			// do nothing!
 		}
-
 	}
 
 	@Override
 	public void render(GameContainer container, StateBasedGame sbg, Graphics g) throws SlickException {
+		// render animation
 		n = (n + 1) % C.ANIMATIONTEMPO;
 		if (n == 0){
 			player.incFrame();
 		}
 
-		// TODO Check Collision!
 		// draw map
 		g.drawImage(map.getImage(), C.SCREEN_WIDTH / 2 - (C.TILE_WIDTH / 2) - player.posX, C.SCREEN_HEIGHT / 2 - (C.TILE_HEIGHT / 2) - player.posY);
 
-		// draw Player in the center
+		// draw player in the center
 		g.drawImage(player.getImage(), C.SCREEN_WIDTH / 2 - (C.TILE_WIDTH / 2), C.SCREEN_HEIGHT / 2 - (C.TILE_HEIGHT / 2) - C.TILE_HEIGHT);
 	
 	}

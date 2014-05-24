@@ -44,21 +44,21 @@ public class Player {
 	}
 	
 	public void moveDown(){
-		if(map.isPassable(posX,posY+1)){
+		if(map.isPassable(posX,posY+C.STEPWIDTH)){
 			isUp = false;
 			posY += C.STEPWIDTH;
 		}
 	}
 	
 	public void moveUp(){
-		if(map.isPassable(posX,posY-1)){
+		if(map.isPassable(posX,posY-C.STEPWIDTH)){
 			isUp = true;
 			posY -= C.STEPWIDTH;
 		}
 	}
 	
 	public void moveRight(){
-		if(map.isPassable(posX+1,posY)){
+		if(map.isPassable(posX+C.STEPWIDTH,posY)){
 			isRight = true;
 			isUp = false;
 			posX += C.STEPWIDTH;
@@ -66,7 +66,7 @@ public class Player {
 	}
 
 	public void moveLeft(){
-		if(map.isPassable(posX-1,posY)){
+		if(map.isPassable(posX-C.STEPWIDTH,posY)){
 			isRight = false;
 			isUp = false;
 			posX -= C.STEPWIDTH;
