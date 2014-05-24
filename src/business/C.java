@@ -24,14 +24,21 @@ public abstract class C {
 	/* SOUNDS */
 	public static String SOUND_XML = "ressources/data/sounds.xml";
 	
-	public static String SOUND_BOSK1 = SOUNDS_PATH+"144083__bosk1__wind-houling-1.wav";
-	public static String SOUND_SKYUMORI = SOUNDS_PATH+"104529__skyumori__door-close-sqeuak-03.wav";
-	public static String SOUND_COSMICD = SOUNDS_PATH+"133008__cosmicd__annulet-of-absorption.wav";
-	public static String SOUND_CASTLEOFSAMPLES = SOUNDS_PATH+"145394__castleofsamples__rushing-river-in-the-woods.wav";
-	public static String SOUND_KLANKBEELD = SOUNDS_PATH+"172307__klankbeeld__room-tone-windy-house-121220-00.wav";
-	public static String SOUND_JIMIMOD = SOUNDS_PATH+"203497__jimimod__cricket-phasing-loop.wav";
-	public static String SOUND_DOBROIDE = SOUNDS_PATH+"205966__kangaroovindaloo__medium-wind.wav";
+	public static String SOUND_WINDWAV = SOUNDS_PATH+"144083__bosk1__wind-houling-1.wav";
 	
+//	public static String SOUND_SKYUMORI = SOUNDS_PATH+"104529__skyumori__door-close-sqeuak-03.wav";
+//	public static String SOUND_COSMICD = SOUNDS_PATH+"133008__cosmicd__annulet-of-absorption.wav";
+//	public static String SOUND_CASTLEOFSAMPLES = SOUNDS_PATH+"145394__castleofsamples__rushing-river-in-the-woods.wav";
+//	public static String SOUND_KLANKBEELD = SOUNDS_PATH+"172307__klankbeeld__room-tone-windy-house-121220-00.wav";
+//	public static String SOUND_JIMIMOD = SOUNDS_PATH+"203497__jimimod__cricket-phasing-loop.wav";
+//	public static String SOUND_DOBROIDE = SOUNDS_PATH+"205966__kangaroovindaloo__medium-wind.wav";
+	
+	public static String SOUND_THEME = SOUNDS_PATH+"theme.wav";
+	public static String SOUND_THEME2 = SOUNDS_PATH+"theme.wav";
+	
+	public static float VOL_EFFECTS = 0.9f;
+	public static float VOL_WIND = 0.0f;
+	public static float VOL_MUSIC = 1.0f;
 	public static float SOUND_EFFECTS = 0.9f;
 	public static float SOUND_WIND = 0.3f;
 	public static float SOUND_MUSIC = 0.9f;

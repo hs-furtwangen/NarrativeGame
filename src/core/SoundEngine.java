@@ -25,18 +25,51 @@ public class SoundEngine {
 
 	private static Logger logger = LogManager.getRootLogger();
 	private Sound wind;
-	private static List<SoundSpot> spots = new ArrayList<SoundSpot>();
+	private Sound theme;
+	private Sound theme2;
+	private List<SoundSpot> spots = new ArrayList<SoundSpot>();
 
-	public void start() {
-		logger.info("Startup SoundEngine");
+	public SoundEngine() {
+		logger.info("Initializing SoundEngine");
 		loadData();
+
 		try {
-			wind = new Sound(C.SOUND_BOSK1);
+			wind = new Sound(C.SOUND_WINDWAV);
+			theme = new Sound(C.SOUND_THEME);
+			theme2 = new Sound(C.SOUND_THEME2);
 		} catch (SlickException e) {
 			logger.error(e.getMessage());
 		}
-		logger.info("Starting windy Sounds");
-		wind.loop(1.0f, C.SOUND_WIND);
+	}
+
+	public void playWind() {
+		logger.info("Playing Wind");
+		theme.stop();
+		theme2.stop();
+
+		wind.loop(1.0f, C.VOL_WIND);
+	}
+
+	public void playTheme() {
+		logger.info("Playing Theme");
+		wind.stop();
+		theme2.stop();
+
+		theme.loop(1.0f, C.VOL_MUSIC);
+	}
+
+	public void playTheme2() {
+		logger.info("Playing Theme2");
+		wind.stop();
+		theme.stop();
+
+		theme2.loop(1.0f, C.VOL_MUSIC);
+	}
+
+	public void stopAllEffects() {
+		for (SoundSpot spot : spots) {
+			spot.getMusic().stop();
+		}
 	}
 
 	public void loadData() {
@@ -44,7 +77,6 @@ public class SoundEngine {
 		try {
 			SAXParserFactory spf = SAXParserFactory.newInstance();
 			SAXParser sp = spf.newSAXParser();
-
 			sp.parse(new FileInputStream(new File(C.SOUND_XML)), new SoundSpotHandler());
 		} catch (ParserConfigurationException e) {
 			logger.error(e.getMessage());
@@ -60,11 +92,14 @@ public class SoundEngine {
 
 	public void updatePosition(int x, int y) {
 		// TODO neue Volumen und Pitch berechnen
-//		logger.info("Update Sounds---------------");
+		// logger.info("Update Sounds---------------");
 		for (SoundSpot spot : spots) {
 			float distance = distance(x, y, spot.getPosX(), spot.getPosY());
 			if (distance <= C.MAXDISTANCE) {
-				float vol = (((distance / C.MAXDISTANCE) - 1) * -1) * C.SOUND_EFFECTS;
+				if (!spot.getMusic().playing()) {
+					spot.getMusic().loop(1.0f, 0.0f);
+				}
+				float vol = (((distance / C.MAXDISTANCE) - 1) * -1) * C.VOL_EFFECTS;
 				spot.getMusic().fade(C.SOUND_FADETIME, vol, false);
 			}
 		}
@@ -80,7 +115,7 @@ public class SoundEngine {
 					int x = Integer.parseInt(attr.getValue("xPos"));
 					int y = Integer.parseInt(attr.getValue("yPos"));
 
-//					logger.info("src=" + src + " x=" + x + " y=" + y);
+					// logger.info("src=" + src + " x=" + x + " y=" + y);
 
 					SoundSpot spot = new SoundSpot(src, x, y);
 					spots.add(spot);
