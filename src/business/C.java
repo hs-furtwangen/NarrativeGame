@@ -8,6 +8,7 @@ public abstract class C {
 	public static int SCREEN_HEIGHT = 600;
 	public static int FPS = 30;
 	public static int STEPWIDTH = 2;
+	public static int JUMP_HEIGHT = 80;
 	
 	public static String PATH = "ressources/images/";
 	public static String PASS_MAP = "ressources/maps/pass_map.png";
