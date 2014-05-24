@@ -56,11 +56,13 @@ public class CoreGame extends BasicGameState {
 			player.incFrame();
 		}
 
+		// TODO Check Collision!
 		// draw map
 		g.drawImage(map.getImage(), C.SCREEN_WIDTH / 2 - (C.TILE_WIDTH / 2) - player.posX, C.SCREEN_HEIGHT / 2 - (C.TILE_HEIGHT / 2) - player.posY);
 
 		// draw Player in the center
 		g.drawImage(player.getImage(), C.SCREEN_WIDTH / 2 - (C.TILE_WIDTH / 2), C.SCREEN_HEIGHT / 2 - (C.TILE_HEIGHT / 2) - C.TILE_HEIGHT);
+	
 	}
 
 	@Override
