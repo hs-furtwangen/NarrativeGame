@@ -22,10 +22,13 @@ import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
-import org.xml.sax.*;
+import org.xml.sax.Attributes;
+import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
 import business.C;
+import core.SoundEngine;
+import core.SoundEngineHandler;
 import business.LogicalPlayer;
 
 public class SceneGame extends BasicGameState {
@@ -44,15 +47,14 @@ public class SceneGame extends BasicGameState {
 	private ArrayList<Box> boxes;
 	private ArrayList<Float> xPosis;
 	private ArrayList<Float> yPosis;
-	private int n=0;
+	private SoundEngine soundEngine;
+	private int n = 0;
 
 	private Image currentImage;
 
 	public SceneGame(int id) {
 		this.id = id;
 		player = new Player();
-		// world = new World(new Vector2f(0.0f, 1000f), 10, new
-		// QuadSpaceStrategy(20, 5));
 		world = new World(new Vector2f(0.0f, C.FORCE_GRAVITY), 20, new BruteCollisionStrategy());
 		body = new Body("player", new Box(16, 32), C.PLAYERMASS);
 		body.setRotatable(false);
@@ -90,12 +92,11 @@ public class SceneGame extends BasicGameState {
 
 				public void endElement(String uri, String localName, String qName) throws SAXException {
 
-
 				}
 
 			};
 
-			saxParser.parse("ressources/scenes/scene1.xml", handler);
+			saxParser.parse("ressources/scenes/scene"+id+".xml", handler);
 
 		} catch (Exception e) {
 			logger.info("XMLHandling went wrong.");
@@ -139,14 +140,12 @@ public class SceneGame extends BasicGameState {
 	@Override
 	public void init(GameContainer container, StateBasedGame sbg) throws SlickException {
 		logger.info("Initialisiere SceneGame ID:" + id);
-		currentImage = new Image(C.IMAGES_PATH + "scene1.png");
-		
+		currentImage = new Image(C.IMAGES_PATH + "scene"+id+".png");
 	}
 
 	@Override
 	public void update(GameContainer container, StateBasedGame sbg, int delta) throws SlickException {
 		LogicalPlayer.archievedArtefact(id);
-		
 		Input input = container.getInput();
 		world.step();
 
@@ -169,12 +168,10 @@ public class SceneGame extends BasicGameState {
 
 	@Override
 	public void render(GameContainer container, StateBasedGame sbg, Graphics g) throws SlickException {
-		
 		n = (n + 1) % C.ANIMATIONTEMPO;
 		if (n == 0){
 			player.incFrame();
 		}
-		
 		g.drawImage(currentImage, 0, 0);
 		drawPlayer(body, g);
 		for (int l = 0; l < colliders.length; l++) {
@@ -200,28 +197,23 @@ public class SceneGame extends BasicGameState {
 
 		
 		g.setColor(Color.black);
-		g.drawLine((int) v1.x, (int) v1.y, (int) v2.x, (int) v2.y);
-		g.drawLine((int) v2.x, (int) v2.y, (int) v3.x, (int) v3.y);
-		g.drawLine((int) v3.x, (int) v3.y, (int) v4.x, (int) v4.y);
-		g.drawLine((int) v4.x, (int) v4.y, (int) v1.x, (int) v1.y);
-		g.fillRect(v1.x, v1.y, v2.x-v1.x, v3.y-v1.y);
+		g.fillRect(v1.x, v1.y, v2.x - v1.x, v3.y - v1.y);
 	}
+
 	public void drawPlayer(Body body, Graphics g) {
 		Box box = (Box) body.getShape();
-		//Vector2f[] pts = box.getPoints(body.getPosition(), body.getRotation());
+//		g.drawImage(player.image, body.getPosition().getX() - player.image.getWidth() / 2, body.getPosition().getY() - player.image.getHeight() / 2);
 
-//		Vector2f v1 = pts[0];
-//		Vector2f v2 = pts[1];
-//		Vector2f v3 = pts[2];
-//		Vector2f v4 = pts[3];
-
-		//g.setColor(Color.white);
 		Image subimage = player.getImage();
-		g.drawImage(subimage, body.getPosition().getX()-subimage.getWidth()/2, body.getPosition().getY()-subimage.getHeight()/2);
-//		g.drawLine((int) v1.x, (int) v1.y, (int) v2.x, (int) v2.y);
-//		g.drawLine((int) v2.x, (int) v2.y, (int) v3.x, (int) v3.y);
-//		g.drawLine((int) v3.x, (int) v3.y, (int) v4.x, (int) v4.y);
-//		g.drawLine((int) v4.x, (int) v4.y, (int) v1.x, (int) v1.y);
+		g.drawImage(subimage, body.getPosition().getX() - subimage.getWidth() / 2, body.getPosition().getY() - subimage.getHeight() / 2);
+	}
+
+	@Override
+	public void enter(GameContainer container, StateBasedGame game) throws SlickException {
+		logger.info("Enter DungeonGame");
+		super.enter(container, game);
+		soundEngine = SoundEngineHandler.getSoundEngine();
+		soundEngine.playTheme();
 	}
 
 	@Override
