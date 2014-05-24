@@ -27,7 +27,7 @@ public class StartGame extends StateBasedGame{
 	}
 	
 	public static void main(String[] args) {
-		logger.info("Application wird started!");
+		logger.info("Starting up application");
 		
 		try {
 			AppGameContainer app = new AppGameContainer(new StartGame("Nara"));
