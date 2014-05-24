@@ -1,0 +1,14 @@
+<?xml version = "1.0"?>
+<boxes>
+	<box xPos="150" yPos="600" width="50" height="50"></box>
+	<box xPos="200" yPos="600" width="50" height="50"></box>
+	<box xPos="250" yPos="600" width="50" height="50"></box>
+	<box xPos="300" yPos="600" width="50" height="50"></box>
+	<box xPos="350" yPos="600" width="50" height="50"></box>
+	<box xPos="400" yPos="600" width="50" height="50"></box>	
+	<box xPos="450" yPos="600" width="50" height="50"></box>
+	<box xPos="500" yPos="600" width="50" height="50"></box>
+	<box xPos="550" yPos="600" width="50" height="50"></box>
+	<box xPos="600" yPos="600" width="50" height="50"></box>
+	<box xPos="650" yPos="600" width="50" height="50"></box>	
+</boxes>
