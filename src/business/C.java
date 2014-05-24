@@ -34,7 +34,7 @@ public abstract class C {
 	
 	public static float SOUND_EFFECTS = 0.9f;
 	public static float SOUND_WIND = 0.3f;
-	public static float SOUND_MUSIC = 0.0f;
+	public static float SOUND_MUSIC = 0.9f;
 	public static int SOUND_FADETIME = 200;
 	public static int MAXDISTANCE = 80;
 	
