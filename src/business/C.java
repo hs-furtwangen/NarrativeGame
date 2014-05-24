@@ -12,11 +12,11 @@ public abstract class C {
 	
 	public static String PATH = "ressources/images/";
 	public static String PASS_MAP = "ressources/maps/pass_map.png";
-	public static String IMG_MAP = "ressources/maps/map.png";
+	public static String IMG_MAP = "ressources/maps/pass_map.png";
 	public static int MAP_WIDTH = 10;
 	public static int MAP_HEIGHT = 5;
 	
 	public static char NONPASSABLE = 'x';
-	public static int ANIMATIONTEMPO = 6;
+	public static int ANIMATIONTEMPO = 8;
 
 }

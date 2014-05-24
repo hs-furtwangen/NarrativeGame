@@ -1,5 +1,7 @@
 package scene;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
@@ -13,6 +15,8 @@ import org.newdawn.slick.state.StateBasedGame;
 import business.C;
 
 public class SceneGame extends BasicGameState {
+	
+	private static Logger logger = LogManager.getRootLogger();
 
 	Player player;
 	private int id;
@@ -40,19 +44,20 @@ public class SceneGame extends BasicGameState {
 
 	@Override
 	public void init(GameContainer container, StateBasedGame sbg) throws SlickException {
-		// TODO Auto-generated method stub
+		logger.info("Initialisiere SceneGame ID:"+id);
+		
+		// TODO Lade alle Frame. Array[]?
 		currentImage = new Image(C.PATH + "scene" + id + "_1.png");
 	}
 
 	@Override
 	public void render(GameContainer container, StateBasedGame sbg, Graphics g) throws SlickException {
-		g.drawImage(currentImage, 0, 0); // TODO frame ersetzen
+		g.drawImage(currentImage, 0, 0);
 		g.drawImage(player.getImage(), 0 + player.posX, 0 + (C.SCREEN_HEIGHT + (player.posY - player.image.getHeight())));
 	}
 
 	@Override
 	public void update(GameContainer container, StateBasedGame sbg, int delta) throws SlickException {
-		// TODO Auto-generated method stub
 		Input input = container.getInput();
 
 		if (input.isKeyDown(Input.KEY_UP) && !isJumping) {

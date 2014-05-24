@@ -46,14 +46,22 @@ public class Map {
 	}
 
 	public boolean isPassable(int x, int y) {
-		if (!checkColorsForPixel(x, y))
+		if (!checkColorsForPixel(x, y)) {
+			logger.info("Point left top failed");
 			return false;
-		if (!checkColorsForPixel(x + C.TILE_WIDTH, y))
+		}
+		if (!checkColorsForPixel(x + C.TILE_WIDTH, y)) {
+			logger.info("Point right top failed");
 			return false;
-		if (!checkColorsForPixel(x, y + C.TILE_HEIGHT))
+		}
+		if (!checkColorsForPixel(x, y + C.TILE_HEIGHT)) {
+			logger.info("Point left button failed");
 			return false;
-		if (!checkColorsForPixel(x + C.TILE_WIDTH, y + C.TILE_HEIGHT))
+		}
+		if (!checkColorsForPixel(x + C.TILE_WIDTH, y + C.TILE_HEIGHT)) {
+			logger.info("Point right button failed");
 			return false;
+		}
 
 		return true;
 
@@ -65,36 +73,34 @@ public class Map {
 		Color blue = new Color(0, 0, 255);
 		Color black = new Color(0, 0, 0);
 
+		boolean bFlag = true;
 		try {
 
 			if (compareTwoRGBs(pass_map.getColor(x, y), red)) {
-				// TODO start scene 1
 				logger.info("Start scene RED");
 				sbg.enterState(1);
-				return false;
+				bFlag = false;
 			}
 			if (compareTwoRGBs(pass_map.getColor(x, y), green)) {
-				// TODO start scene 2
 				logger.info("Start scene GREEN");
 				sbg.enterState(2);
-				return false;
+				bFlag = false;
 			}
 			if (compareTwoRGBs(pass_map.getColor(x, y), blue)) {
-				// TODO start scene 3
 				logger.info("Start scene BLUE");
 				sbg.enterState(3);
-				return false;
+				bFlag = false;
 			}
 			if (compareTwoRGBs(pass_map.getColor(x, y), black)) {
-				return false;
+				bFlag = false;
 			}
 
 		} catch (ArrayIndexOutOfBoundsException e) {
 			// pixel out of range
-			return false;
+			bFlag = false;
 		}
 
-		return true;
+		return bFlag;
 	}
 
 	private boolean compareTwoRGBs(org.newdawn.slick.Color cSlick, Color color) {
