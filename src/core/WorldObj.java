@@ -4,6 +4,7 @@ import java.awt.Image;
 
 public abstract class WorldObj {
 	private boolean isPassable;
+	@SuppressWarnings("unused")
 	private Image image;
 	
 	public WorldObj(){
