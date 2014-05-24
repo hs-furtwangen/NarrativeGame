@@ -55,8 +55,6 @@ public class SceneGame extends BasicGameState {
 	public SceneGame(int id) {
 		this.id = id;
 		player = new Player();
-		// world = new World(new Vector2f(0.0f, 1000f), 10, new
-		// QuadSpaceStrategy(20, 5));
 		world = new World(new Vector2f(0.0f, C.FORCE_GRAVITY), 20, new BruteCollisionStrategy());
 		body = new Body("player", new Box(16, 32), C.PLAYERMASS);
 		body.setRotatable(false);
@@ -199,38 +197,15 @@ public class SceneGame extends BasicGameState {
 
 		
 		g.setColor(Color.black);
-		g.drawLine((int) v1.x, (int) v1.y, (int) v2.x, (int) v2.y);
-		g.drawLine((int) v2.x, (int) v2.y, (int) v3.x, (int) v3.y);
-		g.drawLine((int) v3.x, (int) v3.y, (int) v4.x, (int) v4.y);
-		g.drawLine((int) v4.x, (int) v4.y, (int) v1.x, (int) v1.y);
 		g.fillRect(v1.x, v1.y, v2.x - v1.x, v3.y - v1.y);
 	}
 
 	public void drawPlayer(Body body, Graphics g) {
 		Box box = (Box) body.getShape();
-		// Vector2f[] pts = box.getPoints(body.getPosition(),
-		// body.getRotation());
+//		g.drawImage(player.image, body.getPosition().getX() - player.image.getWidth() / 2, body.getPosition().getY() - player.image.getHeight() / 2);
 
-		// Vector2f v1 = pts[0];
-		// Vector2f v2 = pts[1];
-		// Vector2f v3 = pts[2];
-		// Vector2f v4 = pts[3];
-
-		// g.setColor(Color.white);
-		g.drawImage(player.image, body.getPosition().getX() - player.image.getWidth() / 2, body.getPosition().getY() - player.image.getHeight() / 2);
-		// g.drawLine((int) v1.x, (int) v1.y, (int) v2.x, (int) v2.y);
-		// g.drawLine((int) v2.x, (int) v2.y, (int) v3.x, (int) v3.y);
-		// g.drawLine((int) v3.x, (int) v3.y, (int) v4.x, (int) v4.y);
-		// g.drawLine((int) v4.x, (int) v4.y, (int) v1.x, (int) v1.y);
-
-		// g.setColor(Color.white);
 		Image subimage = player.getImage();
 		g.drawImage(subimage, body.getPosition().getX() - subimage.getWidth() / 2, body.getPosition().getY() - subimage.getHeight() / 2);
-		// g.drawLine((int) v1.x, (int) v1.y, (int) v2.x, (int) v2.y);
-		// g.drawLine((int) v2.x, (int) v2.y, (int) v3.x, (int) v3.y);
-		// g.drawLine((int) v3.x, (int) v3.y, (int) v4.x, (int) v4.y);
-		// g.drawLine((int) v4.x, (int) v4.y, (int) v1.x, (int) v1.y);
-
 	}
 
 	@Override
