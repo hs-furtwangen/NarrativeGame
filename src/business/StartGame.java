@@ -47,7 +47,7 @@ public class StartGame extends StateBasedGame {
 		LogicalPlayer.init();
 
 		try {
-			AppGameContainer app = new AppGameContainer(new StartGame("Nara"));
+			AppGameContainer app = new AppGameContainer(new StartGame("Black Forest Ghost"));
 			app.setDisplayMode((int) (C.SCREEN_WIDTH * C.ZOOMLEVEL), (int) (C.SCREEN_HEIGHT * C.ZOOMLEVEL), false);
 			app.setTargetFrameRate(C.FPS);
 			app.setAlwaysRender(true);

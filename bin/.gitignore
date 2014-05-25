@@ -1,4 +1,7 @@
 /business/
-/intro/
-/outro/
 /core/
+/intro/
+/log4j2.xml
+/outro/
+/scene/
+/util/
