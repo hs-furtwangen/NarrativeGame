@@ -1,5 +1,7 @@
-<?xml version="1.0"?>
+<xml>
 	<boxes>
+		<porter xPos="50" yPos="150" width="32" height="32" src="artefact2.png"></porter>
+		<start xPos="350" yPos="150"></start>
 		<box xPos="320" yPos="24" width="640" height="48"></box>
 		<box xPos="14" yPos="240" width="28" height="480"></box>
 		<box xPos="320" yPos="423" width="640" height="115"></box>

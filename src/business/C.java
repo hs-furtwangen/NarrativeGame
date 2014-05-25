@@ -8,7 +8,7 @@ public abstract class C {
 	public static int SCREEN_HEIGHT = 480;
 
 	public static int FPS = 30;
-	public static int STEPWIDTH = 2;
+	public static int STEPWIDTH = 4;
 	public static int JUMP_HEIGHT = 80;
 	public static int ANIMATIONTEMPO = 8;
 	
@@ -16,6 +16,7 @@ public abstract class C {
 	/* PATHS AND MAPS */
 	public static String IMAGES_PATH = "ressources/images/";
 	public static String SOUNDS_PATH = "ressources/sounds/";
+	public static String SCENE_PATH = "ressources/scenes/";
 	
 	public static String PASS_MAP = "ressources/maps/pass_map.png";
 	public static String IMG_MAP = "ressources/maps/map.png";
@@ -36,14 +37,14 @@ public abstract class C {
 	public static String SOUND_THEME = SOUNDS_PATH+"theme.wav";
 	public static String SOUND_THEME2 = SOUNDS_PATH+"theme.wav";
 	
-	public static float VOL_EFFECTS = 0.9f;
-	public static float VOL_WIND = 0.0f;
-	public static float VOL_MUSIC = 1.0f;
+	public static float VOL_EFFECTS = 0.7f;
+	public static float VOL_WIND = 0.2f;
+	public static float VOL_MUSIC = 0.3f;
 	public static float SOUND_EFFECTS = 0.9f;
 	public static float SOUND_WIND = 0.3f;
 	public static float SOUND_MUSIC = 0.9f;
 	public static int SOUND_FADETIME = 200;
-	public static int MAXDISTANCE = 80;
+	public static int MAXDISTANCE = 70;
 	
 	
 	
@@ -58,4 +59,7 @@ public abstract class C {
 	public static float FORCE_RIGHTLEFT = 20f;
 	public static float FORCE_GRAVITY = 1000f;
 	public static float PLAYERMASS = 0.01f;
+	public static float MAX_X_VELOCITY = 500f;
+	public static float MAX_Y_VELOCITY = 800f;
+	public static float ARTEFACT_MASS = 0.01f;
 }
