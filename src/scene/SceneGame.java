@@ -90,6 +90,7 @@ public class SceneGame extends BasicGameState implements CollisionListener{
 	public void init(GameContainer container, StateBasedGame sbg) throws SlickException {
 		logger.info("Initialisiere SceneGame ID:" + id);
 		currentImage = new Image(C.IMAGES_PATH + "scene"+id+".png");
+		maingame = sbg;
 	}
 
 	@Override
@@ -126,7 +127,7 @@ public class SceneGame extends BasicGameState implements CollisionListener{
 
 		// draw boxes
 		for (BoxModell boxmodell : env.getBoxes()) {
-			if (boxmodell instanceof Porter && LogicalPlayer.getArtefacts()[id]==false) {
+			if (boxmodell instanceof Porter) {
 				// TODO set everytime? Performance!
 				porter = (Porter) boxmodell;
 				drawPorter((Porter)boxmodell, g);
