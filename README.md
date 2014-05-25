@@ -5,10 +5,11 @@ NarrativeGame
 Dieses Spiel entstand im Rahm des GameJam 2014 an der Hochschule Furtwangen. Dabei geht es darum, in 52 Stunden ein Spiel zu entwicklen. Der GameJam 2014 fand vom 23. bis 25.Mai statt.
 ## Team
 
+    Thi Ai Nhi Dong
     Jens Kuhnert
     Jonas Hundertmark
     Marius Bacher
-    Felix Gähr
+    Felix Gï¿½hr
     Maximilian Noppel
 
 ## Licences.txt:
@@ -17,9 +18,9 @@ This game uses the following sounds from freesound.org:
 
 S: In a little forest.wav by Kyster | License: Attribution S: forest spring birds windy 3bft 1pm.wav by klankbeeld | License: Attribution S: volivieri_small_pipe_bang_REMIX_oneshot.wav by DJ Chronos | License: Attribution S: jump1.wav by LloydEvans09 | License: Attribution S: 33.wav by y89312 | License: Attribution S: cat meow by tuberatanka | License: Creative Commons 0 S: Wind Chimes in GALE over wooded valley - Gypsy Soprano, Mezzo - excerpt by Philip Goddard | License: Attribution Noncommercial S: Water Wheel by morturn | License: Attribution S: Cricket Phasing Loop.aiff by JimiMod | License: Creative Commons 0 S: room-tone windy house 121220_00.wav by klankbeeld | License: Attribution S: 20090407.cricket.far.wav by dobroide | License: Attribution S: Shiny Blink or Microwave by Flo_Rayen | License: Attribution S: rushing river in the woods by CastleofSamples | License: Attribution S: Echoing metal pings.flac by Timbre | License: Attribution Noncommercial S: Wind Houling 1 .wav by Bosk1 | License: Attribution Noncommercial S: Medium Wind by kangaroovindaloo | License: Attribution
 
-Software, die für die Erstellung dieses Spiels genutzt wurde:
+Software, die fï¿½r die Erstellung dieses Spiels genutzt wurde:
 
-Online Tilemap Editor http://elias-schuett.de/git/Online-Tile-Map-Editor/# Von Elias Schütt. Kizensiert unter CC-BY-NC-SA 4.0
+Online Tilemap Editor http://elias-schuett.de/git/Online-Tile-Map-Editor/# Von Elias Schï¿½tt. Kizensiert unter CC-BY-NC-SA 4.0
 
 Pyxel Edit von Daniel Kvarfordt. http://pyxeledit.com/about.php
 
