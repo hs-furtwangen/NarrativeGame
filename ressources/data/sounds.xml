@@ -3,4 +3,13 @@
 	<spot xPos="135" yPos="165" src="wind-houses.wav" />
 	<spot xPos="425" yPos="500" src="cricket-far.wav" />
 	<spot xPos="145" yPos="735" src="cricket-far.wav" />
+	<spot xPos="960" yPos="120" src="pling.wav" />
+
+	<spot xPos="440" yPos="100" src="lachen.wav" />
+	<spot xPos="430" yPos="930" src="cricket-phasing.wav" />
+
+	<spot xPos="670" yPos="370" src="woelfe.wav" />
+	<spot xPos="105" yPos="945" src="katze.wav" />
+
+	<!--  <spot xPos="903" yPos="513" src="lichtung.wav" /> -->
 </spots>

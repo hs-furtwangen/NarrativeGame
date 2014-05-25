@@ -1,4 +1,4 @@
-package Outro;
+package intro;
 
 
 
@@ -17,11 +17,11 @@ import org.newdawn.slick.state.StateBasedGame;
 
 import business.C;
 
-public class Outro extends BasicGameState{
+public class Intro extends BasicGameState{
 	
 	private Image logo;
 	
-	public Outro(){
+	public Intro(){
 	}
 
 	@Override
@@ -35,7 +35,7 @@ public class Outro extends BasicGameState{
 	Input input = container.getInput();
 	
 	if(input.isKeyPressed(Input.KEY_SPACE)){
-		System.exit(1);
+		sbg.enterState(C.TOPDOWNGAME);
 	}
 	}
 	
@@ -45,13 +45,13 @@ public class Outro extends BasicGameState{
 		g.scale(C.ZOOMLEVEL, C.ZOOMLEVEL);
 		g.drawImage(logo, (C.SCREEN_WIDTH-logo.getWidth())/2, ((C.SCREEN_HEIGHT-logo.getHeight())/2)-offset);
 		g.setColor(Color.white);
-		g.drawString("GEWONNEN!\nZum Beenden LEERTASTE drücken!", 30, 190);
+		g.drawString("\nZum Starten LEERTASTE drücken!", 30, 190);
 	}
 
 
 	@Override
 	public int getID() {
-		return C.OUTRO;
+		return C.INTRO;
 	}
 
 }

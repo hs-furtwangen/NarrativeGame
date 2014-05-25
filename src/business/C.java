@@ -43,9 +43,9 @@ public abstract class C {
 	public static String SOUND_THEME = SOUNDS_PATH+"theme.wav";
 	public static String SOUND_THEME2 = SOUNDS_PATH+"theme.wav";
 	
-	public static float VOL_EFFECTS = 1.0f;
+	public static float VOL_EFFECTS = 0.4f;
 	public static float VOL_WIND = 0.2f;
-	public static float VOL_MUSIC = 0.1f; 
+	public static float VOL_MUSIC = 0.075f; 
 	public static float VOL_REACTIONS = 0.5f;
 	public static int SOUND_FADETIME = 200;
 	

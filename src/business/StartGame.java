@@ -1,5 +1,7 @@
 package business;
 
+import intro.Intro;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
@@ -13,8 +15,7 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 
-import Intro.Intro;
-import Outro.Outro;
+import outro.Outro;
 import scene.SceneGame;
 import core.CoreGame;
 
