@@ -13,6 +13,7 @@ import javax.xml.parsers.SAXParserFactory;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.Sound;
 import org.xml.sax.Attributes;
@@ -26,7 +27,6 @@ public class SoundEngine {
 	private static Logger logger = LogManager.getRootLogger();
 	private Sound wind;
 	private Sound theme;
-	private Sound theme2;
 	private List<SoundSpot> spots = new ArrayList<SoundSpot>();
 
 	public SoundEngine() {
@@ -36,7 +36,6 @@ public class SoundEngine {
 		try {
 			wind = new Sound(C.SOUND_WINDWAV);
 			theme = new Sound(C.SOUND_THEME);
-			theme2 = new Sound(C.SOUND_THEME2);
 		} catch (SlickException e) {
 			logger.error(e.getMessage());
 		}
@@ -44,27 +43,18 @@ public class SoundEngine {
 
 	public void playWind() {
 		logger.info("Playing Wind");
-		theme.stop();
-		theme2.stop();
-
+		if(!theme.playing())
+		theme.loop(1.0f, C.VOL_MUSIC);
+		if(!theme.playing())
 		wind.loop(1.0f, C.VOL_WIND);
 	}
 
 	public void playTheme() {
 		logger.info("Playing Theme");
 		wind.stop();
-		theme2.stop();
 
-		theme.loop(1.0f, C.VOL_MUSIC);
 	}
 
-	public void playTheme2() {
-		logger.info("Playing Theme2");
-		wind.stop();
-		theme.stop();
-
-		theme2.loop(1.0f, C.VOL_MUSIC);
-	}
 
 	public void stopAllEffects() {
 		for (SoundSpot spot : spots) {
@@ -101,6 +91,8 @@ public class SoundEngine {
 				}
 				float vol = (((distance / C.MAXDISTANCE) - 1) * -1) * C.VOL_EFFECTS;
 				spot.getMusic().fade(C.SOUND_FADETIME, vol, false);
+			}else{
+				spot.getMusic().fade(C.SOUND_FADETIME, 0.0f, false);
 			}
 		}
 	}
@@ -127,10 +119,6 @@ public class SoundEngine {
 			}
 		}
 
-		@Override
-		public void endElement(String uri, String localName, String qName) throws SAXException {
-
-		}
 	}
 
 	private float distance(float x1, float y1, float x2, float y2) {

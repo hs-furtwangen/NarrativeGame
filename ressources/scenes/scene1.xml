@@ -1,7 +1,8 @@
 <xml>
 	<boxes>
-		<porter xPos="50" yPos="150" width="32" height="32" src="artefact1.png"></porter>
-		<start xPos="150" yPos="150"></start>
+	<!-- Haus -->
+		<porter xPos="392" yPos="300" width="32" height="32" src="artefact1.png"></porter>
+		<start xPos="50" yPos="300"></start>
 		<box xPos="320" yPos="14" width="640" height="28"></box>
 		<box xPos="626" yPos="240" width="28" height="480"></box>
 		<box xPos="320" yPos="413" width="640" height="136"></box>

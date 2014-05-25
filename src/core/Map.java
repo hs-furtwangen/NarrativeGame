@@ -85,17 +85,17 @@ public class Map {
 
 			if (compareTwoRGBs(pass_map.getColor(x, y), red)) {
 				logger.info("Start scene RED");
-				sbg.enterState(1);
+				sbg.enterState(C.SCENERED);
 				bFlag = false;
 			}
 			if (compareTwoRGBs(pass_map.getColor(x, y), green)) {
 				logger.info("Start scene GREEN");
-				sbg.enterState(2);
+				sbg.enterState(C.SCENEGREEN);
 				bFlag = false;
 			}
 			if (compareTwoRGBs(pass_map.getColor(x, y), blue)) {
 				logger.info("Start scene BLUE");
-				sbg.enterState(3);
+				sbg.enterState(C.SCENEBLUE);
 				bFlag = false;
 			}
 			if (compareTwoRGBs(pass_map.getColor(x, y), black)) {

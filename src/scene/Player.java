@@ -15,6 +15,8 @@ public class Player {
 	public int posX;
 	public int posY;
 	private boolean isRight;
+	
+
 	private int frame;
 
 	public Player() {
@@ -46,5 +48,4 @@ public class Player {
 	public void moveLeft(){
 			isRight = false;	
 	}
-	
 }

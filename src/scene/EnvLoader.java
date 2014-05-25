@@ -54,12 +54,17 @@ public class EnvLoader {
 	private class SceneLoader extends DefaultHandler {
 		@Override
 		public void startElement(String uri, String localName, String qName, Attributes attr) throws SAXException {
+			/*
+			 * TODO WORKAROUND WHILE THE VALUE IN THE XML FILES ARE THE FACTOR
+			 * ZOOMLEVEL TO BIG!
+			 */
+
 			if (qName.equals("box")) {
 				try {
-					int xPos = Integer.parseInt(attr.getValue("xPos"));
-					int yPos = Integer.parseInt(attr.getValue("yPos"));
-					int width = Integer.parseInt(attr.getValue("width"));
-					int height = Integer.parseInt(attr.getValue("height"));
+					int xPos = Integer.parseInt(attr.getValue("xPos")) / C.ZOOMLEVEL;
+					int yPos = Integer.parseInt(attr.getValue("yPos")) / C.ZOOMLEVEL;
+					int width = Integer.parseInt(attr.getValue("width")) / C.ZOOMLEVEL;
+					int height = Integer.parseInt(attr.getValue("height")) / C.ZOOMLEVEL;
 					modells.add(new BoxModell(xPos, yPos, width, height));
 				} catch (NumberFormatException e) {
 					logger.error(e.getMessage());
@@ -67,8 +72,8 @@ public class EnvLoader {
 
 			} else if (qName.equals("porter")) {
 				try {
-					int xPos = Integer.parseInt(attr.getValue("xPos"));
-					int yPos = Integer.parseInt(attr.getValue("yPos"));
+					int xPos = Integer.parseInt(attr.getValue("xPos")) / C.ZOOMLEVEL;
+					int yPos = Integer.parseInt(attr.getValue("yPos")) / C.ZOOMLEVEL;
 					int width = Integer.parseInt(attr.getValue("width"));
 					int height = Integer.parseInt(attr.getValue("height"));
 					String src = attr.getValue("src");
@@ -77,9 +82,9 @@ public class EnvLoader {
 					logger.error(e.getMessage());
 				}
 
-			} else if (qName.equals("start")){
-				startx = Integer.parseInt(attr.getValue("xPos"));
-				starty = Integer.parseInt(attr.getValue("yPos"));
+			} else if (qName.equals("start")) {
+				startx = Integer.parseInt(attr.getValue("xPos"))  / C.ZOOMLEVEL;
+				starty = Integer.parseInt(attr.getValue("yPos"))  / C.ZOOMLEVEL;
 			}
 		}
 
@@ -88,6 +93,7 @@ public class EnvLoader {
 	public int getStartY() {
 		return starty;
 	}
+
 	public int getStartX() {
 		return startx;
 	}

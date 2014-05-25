@@ -59,7 +59,7 @@ public class CoreGame extends BasicGameState {
 	public void render(GameContainer container, StateBasedGame sbg, Graphics g) throws SlickException {
 		// TODO scale down
 //		g.translate(-C.SCREEN_WIDTH/2, -C.SCREEN_HEIGHT/2);
-//		g.scale(2, 2);
+		g.scale(C.ZOOMLEVEL, C.ZOOMLEVEL);
 //		g.translate(C.SCREEN_WIDTH/8, C.SCREEN_HEIGHT/8);
 		
 		// render animation
@@ -74,8 +74,7 @@ public class CoreGame extends BasicGameState {
 		// draw player in the center
 		g.drawImage(player.getImage(), C.SCREEN_WIDTH / 2 - (C.TILE_WIDTH / 2), C.SCREEN_HEIGHT / 2 - (C.TILE_HEIGHT / 2) - C.TILE_HEIGHT);
 		
-		// TODO automatisch zentrieren
-		g.drawImage(alphamap, 0, 0);
+		g.drawImage(alphamap, (C.SCREEN_WIDTH-alphamap.getWidth())/2, (C.SCREEN_HEIGHT-alphamap.getHeight())/2);
 		
 		// draw artefacts
 		boolean[] artefacts = LogicalPlayer.getArtefacts();
@@ -101,7 +100,7 @@ public class CoreGame extends BasicGameState {
 	
 	@Override
 	public int getID() {
-		return 0;
+		return C.TOPDOWNGAME;
 	}
 
 }

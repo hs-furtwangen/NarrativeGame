@@ -18,6 +18,17 @@ public class LogicalPlayer {
 		return artefacts;
 	}
 	
+	public static boolean allDone(){
+		boolean b = true;
+		for (boolean artefact : artefacts) {
+			if(!artefact)
+				b= false;
+		}
+		
+		return b;
+		
+	}
+	
 	
 
 }

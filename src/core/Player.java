@@ -21,11 +21,11 @@ public class Player {
 
 	public Player(Map map) {
 		isRight = true;
-		isUp = true;
+		isUp = false;
 		frame = 0;
 		this.map = map;
-		posX = 150;
-		posY = 150;
+		posX = C.STARTPOSX;
+		posY = C.STARTPOSY;
 		try {
 			image = new Image(C.IMAGES_PATH+"char.png");
 		} catch (SlickException e) {

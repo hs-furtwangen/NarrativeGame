@@ -1,12 +1,13 @@
 <xml>
 	<boxes>
-		<porter xPos="50" yPos="150" width="32" height="32" src="artefact2.png"></porter>
-		<start xPos="350" yPos="150"></start>
+	<!-- Höhle -->
+		<porter xPos="160" yPos="300" width="32" height="32" src="artefact2.png"></porter>
+		<start xPos="600" yPos="150"></start>
 		<box xPos="320" yPos="24" width="640" height="48"></box>
 		<box xPos="14" yPos="240" width="28" height="480"></box>
 		<box xPos="320" yPos="423" width="640" height="115"></box>
-		<box xPos="160" yPos="332" width="122" height="26"></box>
-		<box xPos="159" yPos="342" width="26" height="45"></box>
+		<box xPos="160" yPos="332" width="122" height="32"></box>
+		<box xPos="159" yPos="344" width="26" height="45"></box>
 		<box xPos="577" yPos="338" width="126" height="285"></box>
 		<box xPos="549" yPos="350" width="153" height="260"></box>
 		<box xPos="534" yPos="364" width="183" height="233"></box>

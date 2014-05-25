@@ -1,5 +1,7 @@
 package scene;
 
+import java.util.Collection;
+
 import net.phys2d.math.Vector2f;
 import net.phys2d.raw.Body;
 import net.phys2d.raw.CollisionEvent;
@@ -17,6 +19,7 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.Sound;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
@@ -25,7 +28,7 @@ import business.LogicalPlayer;
 import core.SoundEngine;
 import core.SoundEngineHandler;
 
-public class SceneGame extends BasicGameState implements CollisionListener{
+public class SceneGame extends BasicGameState implements CollisionListener {
 
 	private static Logger logger = LogManager.getRootLogger();
 
@@ -37,6 +40,7 @@ public class SceneGame extends BasicGameState implements CollisionListener{
 	private Body wallRight;
 	private Body wallTop;
 	private Body wallBottom;
+	private Image alphamap;
 	private SoundEngine soundEngine;
 	private StateBasedGame maingame;
 	private EnvLoader env;
@@ -53,11 +57,10 @@ public class SceneGame extends BasicGameState implements CollisionListener{
 		player = new Player();
 		world = new World(new Vector2f(0.0f, C.FORCE_GRAVITY), 20, new BruteCollisionStrategy());
 		world.addListener(this);
-		body = new Body("player", new Box(player.getImage().getWidth(), player.getImage().getHeight()), C.PLAYERMASS);
+		body = new Body("player", new Box(player.getImage().getWidth(), player.getImage().getHeight()), C.PLAYER_MASS);
 		body.setRotatable(false);
 		body.setPosition(env.getStartX(), env.getStartY());
 		body.setMaxVelocity(C.MAX_X_VELOCITY, C.MAX_Y_VELOCITY);
-
 
 		// Bordercollisions
 		int borderWidth = 40;
@@ -89,8 +92,9 @@ public class SceneGame extends BasicGameState implements CollisionListener{
 	@Override
 	public void init(GameContainer container, StateBasedGame sbg) throws SlickException {
 		logger.info("Initialisiere SceneGame ID:" + id);
-		currentImage = new Image(C.IMAGES_PATH + "scene"+id+".png");
+		currentImage = new Image(C.IMAGES_PATH + "scene" + id + ".png");
 		maingame = sbg;
+		alphamap = new Image(C.ALPHA_MAP);
 	}
 
 	@Override
@@ -102,14 +106,19 @@ public class SceneGame extends BasicGameState implements CollisionListener{
 		if (input.isKeyDown(Input.KEY_LEFT)) {
 			body.addForce(new Vector2f(-C.FORCE_RIGHTLEFT, 0));
 			player.moveLeft();
-		} else if (input.isKeyDown(Input.KEY_RIGHT)) {
+		}
+		if (input.isKeyDown(Input.KEY_RIGHT)) {
 			body.addForce(new Vector2f(C.FORCE_RIGHTLEFT, 0));
 			player.moveRight();
-		} else if (input.isKeyDown(Input.KEY_DOWN)) {
+		}
+		if (input.isKeyDown(Input.KEY_DOWN)) {
 			// do nothing
-			body.addForce(new Vector2f(0, 0));
-		} else if (input.isKeyPressed(Input.KEY_UP)) {
-			if (body.getVelocity().getY() <= 0.000001f) {
+			// body.addForce(new Vector2f(0, 0));
+		}
+		if (input.isKeyPressed(Input.KEY_UP)) {
+			if (body.getVelocity().getY() <= 0.00001f) {
+				Sound sound = new Sound(C.SOUND_JUMP);
+				sound.play(1.0f, C.VOL_REACTIONS);
 				body.addForce(new Vector2f(0, -C.FORCE_TOPDOWN));
 			}
 		} else {
@@ -118,6 +127,7 @@ public class SceneGame extends BasicGameState implements CollisionListener{
 
 	@Override
 	public void render(GameContainer container, StateBasedGame sbg, Graphics g) throws SlickException {
+		g.scale(C.ZOOMLEVEL, C.ZOOMLEVEL);
 		n = (n + 1) % C.ANIMATIONTEMPO;
 		if (n == 0) {
 			player.incFrame();
@@ -130,7 +140,7 @@ public class SceneGame extends BasicGameState implements CollisionListener{
 			if (boxmodell instanceof Porter) {
 				// TODO set everytime? Performance!
 				porter = (Porter) boxmodell;
-				drawPorter((Porter)boxmodell, g);
+				drawPorter((Porter) boxmodell, g);
 			} else {
 				drawBody(boxmodell.getBody(), g);
 			}
@@ -138,6 +148,7 @@ public class SceneGame extends BasicGameState implements CollisionListener{
 
 		// draw player
 		drawPlayer(body, g);
+
 	}
 
 	/**
@@ -158,9 +169,10 @@ public class SceneGame extends BasicGameState implements CollisionListener{
 
 		g.setColor(Color.black);
 		g.fillRect(v1.x, v1.y, v2.x - v1.x, v3.y - v1.y);
+
 	}
-	
-	public void drawPorter(Porter porter, Graphics g){
+
+	public void drawPorter(Porter porter, Graphics g) {
 		Body porterBody = porter.getBody();
 		Box box = (Box) porterBody.getShape();
 		Vector2f[] pts = box.getPoints(porter.getBody().getPosition(), porter.getBody().getRotation());
@@ -177,14 +189,19 @@ public class SceneGame extends BasicGameState implements CollisionListener{
 	public void drawPlayer(Body body, Graphics g) {
 		Image subimage = player.getImage();
 		g.drawImage(subimage, body.getPosition().getX() - subimage.getWidth() / 2, body.getPosition().getY() - subimage.getHeight() / 2);
+		g.drawImage(alphamap, body.getPosition().getX() - alphamap.getWidth() / 2, body.getPosition().getY() - alphamap.getHeight() / 2);
 	}
 
 	@Override
 	public void enter(GameContainer container, StateBasedGame game) throws SlickException {
 		logger.info("Enter DungeonGame");
+		Sound sound = new Sound(C.SOUND_DUNGEON);
+		sound.play();
 		super.enter(container, game);
 		soundEngine = SoundEngineHandler.getSoundEngine();
 		soundEngine.playTheme();
+		soundEngine.updatePosition(-C.MAXDISTANCE, -C.MAXDISTANCE); // killing
+																	// spots
 		body.setPosition(env.getStartX(), env.getStartY());
 	}
 
@@ -194,15 +211,29 @@ public class SceneGame extends BasicGameState implements CollisionListener{
 	}
 
 	@Override
-	public void collisionOccured(CollisionEvent e) {
-		if(e.getBodyA()==body && e.getBodyB()==porter.getBody() || e.getBodyB()==body && e.getBodyA()==porter.getBody()){
-			logger.info("Player hits Porter in Dungeon "+id);
-			
-			// Entferne Artefact TODO Ich brauche den Porter um wieder auf dem Dungeon zu kommen!
-			LogicalPlayer.archievedArtefact(id);
-//			world.remove(porter.getBody()); 
-//			env.getBoxes().remove(porter);
-			maingame.enterState(0);
+	public void collisionOccured(CollisionEvent event) {
+		try {
+			if (event.getBodyA() == body && event.getBodyB() == porter.getBody() || event.getBodyB() == body && event.getBodyA() == porter.getBody()) {
+				logger.info("Player hits Porter in Dungeon " + id);
+
+				// Entferne Artefact TODO Ich brauche den Porter um wieder auf
+				// dem Dungeon zu kommen!
+				LogicalPlayer.archievedArtefact(id);
+				Sound sound = new Sound(C.SOUND_BLINK);
+				sound.play(1.0f,C.VOL_REACTIONS);
+				// world.remove(porter.getBody());
+				// env.getBoxes().remove(porter);
+				if (LogicalPlayer.allDone()) {
+					maingame.enterState(C.OUTRO);
+				} else {
+					maingame.enterState(C.TOPDOWNGAME);
+				}
+
+			}
+		} catch (NullPointerException e) {
+			logger.warn(e.getMessage());
+		} catch (SlickException e) {
+			logger.warn(e.getMessage());
 		}
 	}
 

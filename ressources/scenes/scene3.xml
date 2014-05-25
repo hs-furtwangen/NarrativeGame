@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+	<boxes>
+	<!-- Brunnen -->
+		<porter xPos="550" yPos="300" width="32" height="32" src="artefact3.png"></porter>
+		<start xPos="300" yPos="100"></start>
+		<box xPos="320" yPos="42" width="640" height="84"></box>
+		<box xPos="320" yPos="417" width="640" height="127"></box>
+		<box xPos="627" yPos="240" width="27" height="480"></box>
+		<box xPos="561" yPos="403" width="158" height="155"></box>
+		<box xPos="14" yPos="240" width="28" height="480"></box>
+		<!--box xPos="185" yPos="177" width="370" height="353"></box-->
+		<box xPos="551" yPos="130" width="26" height="109"></box>
+
+		<box xPos="352" yPos="95" width="25" height="25"></box>
+		<box xPos="452" yPos="100" width="25" height="60"></box>
+		<box xPos="231" yPos="135" width="25" height="110"></box>
+		<box xPos="175" yPos="100" width="25" height="45"></box>
+		<box xPos="80" yPos="121" width="25" height="80"></box>
+
+
+
+	</boxes>
+</xml>
