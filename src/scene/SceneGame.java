@@ -58,6 +58,7 @@ public class SceneGame extends BasicGameState implements CollisionListener{
 		body.setPosition(env.getStartX(), env.getStartY());
 		body.setMaxVelocity(C.MAX_X_VELOCITY, C.MAX_Y_VELOCITY);
 
+
 		// Bordercollisions
 		int borderWidth = 40;
 		int borderOffset = (borderWidth / 2) + 1;
@@ -88,8 +89,7 @@ public class SceneGame extends BasicGameState implements CollisionListener{
 	@Override
 	public void init(GameContainer container, StateBasedGame sbg) throws SlickException {
 		logger.info("Initialisiere SceneGame ID:" + id);
-		currentImage = new Image(C.IMAGES_PATH + "scene1.png");
-		maingame = sbg;
+		currentImage = new Image(C.IMAGES_PATH + "scene"+id+".png");
 	}
 
 	@Override
