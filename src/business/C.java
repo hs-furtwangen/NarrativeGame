@@ -25,7 +25,7 @@ public abstract class C {
 	public static String ALPHA_MAP = "ressources/maps/alpha_map.png";
 	
 	/* SOUNDS */
-	public static String SOUND_XML = "ressources/data/sounds.xml";
+	public static String SOUND_XML = "../ressources/data/sounds.xml";
 	
 	public static String SOUND_WINDWAV = SOUNDS_PATH+"wind.wav";
 	public static String SOUND_JUMP = SOUNDS_PATH+"jump.wav"; // not in properties

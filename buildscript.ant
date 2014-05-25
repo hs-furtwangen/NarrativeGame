@@ -1,0 +1,62 @@
+<project name="Black Forest Ghost" default="dist" basedir=".">
+	<description>
+        This is the Buildscript for the Black Forest Ghost Game.
+    </description>
+	<!-- set global properties for this build -->
+	<property name="src" location="src" />
+	<property name="build" location="build" />
+	<property name="dist" location="dist" />
+
+	<target name="init">
+		<!-- Create the time stamp -->
+		<tstamp />
+		<!-- Create the build directory structure used by compile -->
+		<mkdir dir="${build}" />
+		<mkdir dir="${build}/ressources" />
+		<mkdir dir="${build}/ressources/native" />
+		<mkdir dir="${build}/ressources/native/windows" />
+
+		<copy todir="${build}/ressources">
+			<fileset dir="ressources" />
+		</copy>
+		<copy file="${src}/log4j2.xml" tofile="${build}/log4j2.xml" />
+		<path id="classpath">
+			<fileset dir="ressources">
+				<include name="*.jar" />
+				<include name="lwjgl-2.9.1/jar/*.jar" />
+			</fileset>
+		</path>
+	</target>
+
+	<target name="compile" depends="init" description="compile the source ">
+		<!-- Compile the java code from ${src} into ${build} -->
+		<javac srcdir="${src}" destdir="${build}">
+			<classpath refid="classpath" />
+		</javac>
+	</target>
+
+	<target name="dist" depends="compile" description="generate the distribution">
+		<!-- Create the distribution directory -->
+		<mkdir dir="${dist}" />
+		<copy todir="${dist}">
+			<fileset dir="ressources/lwjgl-2.9.1/native/windows" />
+		</copy>
+		<manifestclasspath property="libs" jarfile="${dist}/Black_Forest_Ghost-${DSTAMP}.jar">
+			<classpath refid="classpath" />
+		</manifestclasspath>
+		<!-- Put everything in ${build} into the Black_Forest_Ghost-${DSTAMP}.jar file -->
+		<jar jarfile="${dist}/Black_Forest_Ghost-${DSTAMP}.jar" basedir="${build}">
+			<manifest>
+				<attribute name="Main-Class" value="business.StartGame" />
+				<attribute name="Class-Path" value="${libs}" />
+			</manifest>
+		</jar>
+		<delete dir="${build}" />
+	</target>
+
+	<target name="clean" description="clean up">
+		<!-- Delete the ${build} and ${dist} directory trees -->
+		<delete dir="${build}" />
+		<delete dir="${dist}" />
+	</target>
+</project>

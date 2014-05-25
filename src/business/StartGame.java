@@ -2,11 +2,7 @@ package business;
 
 import intro.Intro;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Properties;
-
-import javax.swing.Popup;
+import java.io.PrintStream;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -43,6 +39,14 @@ public class StartGame extends StateBasedGame {
 
 	public static void main(String[] args) {
 		logger.info("Starting up application");
+		PrintStream lwjglStream = new PrintStream(System.out){
+		    public void print(final String message) {
+		        logger.info(message);
+		    }
+		};
+		
+		System.setOut(lwjglStream);
+		System.setErr(lwjglStream);
 		logger.info("Initializing LogicalPlayer");
 		LogicalPlayer.init();
 

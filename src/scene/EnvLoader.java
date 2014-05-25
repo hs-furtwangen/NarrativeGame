@@ -1,5 +1,7 @@
 package scene;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +38,7 @@ public class EnvLoader {
 			SAXParserFactory factory = SAXParserFactory.newInstance();
 			SAXParser saxParser;
 			saxParser = factory.newSAXParser();
-			saxParser.parse(C.SCENE_PATH + "scene" + id + ".xml", new SceneLoader());
+			saxParser.parse(new FileInputStream(new File("../"+C.SCENE_PATH + "scene" + id + ".xml")), new SceneLoader());
 
 		} catch (ParserConfigurationException e) {
 			logger.error(e.getMessage());

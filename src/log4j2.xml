@@ -3,12 +3,18 @@
 	<Appenders>
 		<Console name="Console" target="SYSTEM_OUT">
 			<PatternLayout
-				pattern="%d{HH:mm:ss.SSS} [%t] [%-5level] %logger{36} - %msg%n" />
+				pattern="%d{HH:mm:ss.SSS} [%t] [%-5level] %logger{36} - %msg%n">
+			</PatternLayout>
 		</Console>
+		<File name="Logfile" fileName="./main.log">
+			<PatternLayout
+				pattern="%d{HH:mm:ss.SSS} [%t] [%-5level] %logger{36} - %msg%n">
+			</PatternLayout>
+		</File>
 	</Appenders>
 	<Loggers>
 		<Root level="info">
-			<AppenderRef ref="Console" />
+			<AppenderRef ref="Logfile" />
 		</Root>
 	</Loggers>
 </Configuration>
