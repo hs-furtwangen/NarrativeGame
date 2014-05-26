@@ -10,18 +10,19 @@
 	<target name="init">
 		<!-- Create the time stamp -->
 		<tstamp />
+		<antcall target="clean" />
 		<!-- Create the build directory structure used by compile -->
 		<mkdir dir="${build}" />
 		<mkdir dir="${build}/ressources" />
 		<mkdir dir="${build}/ressources/native" />
 		<mkdir dir="${build}/ressources/native/windows" />
 
-		<copy todir="${build}/ressources">
+		<copy todir="${dist}/ressources">
 			<fileset dir="ressources" />
 		</copy>
 		<copy file="${src}/log4j2.xml" tofile="${build}/log4j2.xml" />
 		<path id="classpath">
-			<fileset dir="ressources">
+			<fileset dir="${dist}/ressources">
 				<include name="*.jar" />
 				<include name="lwjgl-2.9.1/jar/*.jar" />
 			</fileset>
