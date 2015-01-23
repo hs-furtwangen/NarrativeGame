@@ -2,7 +2,11 @@ NarrativeGame
 =============
 ## Willkommen
 
-Dieses Spiel entstand im Rahm des GameJam 2014 an der Hochschule Furtwangen. Dabei geht es darum, in 52 Stunden ein Spiel zu entwicklen. Der GameJam 2014 fand vom 23. bis 25.Mai statt.
+Dieses Spiel entstand im Rahmen des GameJam 2014 an der Hochschule Furtwangen. Dabei sollte in 52 Stunden ein Spiel entwickelt werden.  Der Code ist damit Quick & Dirty entstand. Dennoch viel Spaß beim spielen. 
+
+## Installation
+Es liegt ein Ant-Script bei. Nur unter Windows lauffähig!
+
 ## Team
 
     Thi Ai Nhi Dong
