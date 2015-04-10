@@ -45,7 +45,7 @@ public class Intro extends BasicGameState{
 		g.scale(C.ZOOMLEVEL, C.ZOOMLEVEL);
 		g.drawImage(logo, (C.SCREEN_WIDTH-logo.getWidth())/2, ((C.SCREEN_HEIGHT-logo.getHeight())/2)-offset);
 		g.setColor(Color.white);
-		g.drawString("\nZum Starten LEERTASTE drücken!", 30, 190);
+		g.drawString("\nZum Starten LEERTASTE drÃ¼cken!", 30, 190);
 	}
 
 

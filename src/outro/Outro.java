@@ -42,7 +42,7 @@ public class Outro extends BasicGameState{
 		g.scale(C.ZOOMLEVEL, C.ZOOMLEVEL);
 		g.drawImage(logo, (C.SCREEN_WIDTH-logo.getWidth())/2, ((C.SCREEN_HEIGHT-logo.getHeight())/2)-offset);
 		g.setColor(Color.white);
-		g.drawString("GEWONNEN!\nZum Beenden LEERTASTE drücken!", 30, 190);
+		g.drawString("GEWONNEN!\nZum Beenden LEERTASTE drÃ¼cken!", 30, 190);
 	}
 
 
