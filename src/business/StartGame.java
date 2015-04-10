@@ -24,7 +24,6 @@ public class StartGame extends StateBasedGame {
 
 	}
 
-
 	@Override
 	public void initStatesList(GameContainer container) throws SlickException {
 		// load Games
@@ -38,21 +37,24 @@ public class StartGame extends StateBasedGame {
 	}
 
 	public static void main(String[] args) {
+		System.out.println("Starting");
 		logger.info("Starting up application");
-		PrintStream lwjglStream = new PrintStream(System.out){
-		    public void print(final String message) {
-		        logger.info(message);
-		    }
+		PrintStream lwjglStream = new PrintStream(System.out) {
+			public void print(final String message) {
+				logger.info(message);
+			}
 		};
-		
+
 		System.setOut(lwjglStream);
 		System.setErr(lwjglStream);
 		logger.info("Initializing LogicalPlayer");
 		LogicalPlayer.init();
 
 		try {
-			AppGameContainer app = new AppGameContainer(new StartGame("Black Forest Ghost"));
-			app.setDisplayMode((int) (C.SCREEN_WIDTH * C.ZOOMLEVEL), (int) (C.SCREEN_HEIGHT * C.ZOOMLEVEL), false);
+			AppGameContainer app = new AppGameContainer(new StartGame(
+					"Black Forest Ghost"));
+			app.setDisplayMode((int) (C.SCREEN_WIDTH * C.ZOOMLEVEL),
+					(int) (C.SCREEN_HEIGHT * C.ZOOMLEVEL), false);
 			app.setTargetFrameRate(C.FPS);
 			app.setAlwaysRender(true);
 			app.start();

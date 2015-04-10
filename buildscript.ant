@@ -16,6 +16,7 @@
 		<mkdir dir="${build}/ressources" />
 		<mkdir dir="${build}/ressources/native" />
 		<mkdir dir="${build}/ressources/native/windows" />
+		<mkdir dir="${build}/ressources/native/linux" />
 
 		<copy todir="${dist}/ressources">
 			<fileset dir="ressources" />
@@ -41,6 +42,7 @@
 		<mkdir dir="${dist}" />
 		<copy todir="${dist}">
 			<fileset dir="ressources/lwjgl-2.9.1/native/windows" />
+			<fileset dir="ressources/lwjgl-2.9.1/native/linux" />
 		</copy>
 		<manifestclasspath property="libs" jarfile="${dist}/Black_Forest_Ghost-${DSTAMP}.jar">
 			<classpath refid="classpath" />
