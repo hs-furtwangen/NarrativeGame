@@ -2,10 +2,13 @@ NarrativeGame
 =============
 ## Willkommen
 
-Dieses Spiel entstand im Rahmen des GameJam 2014 an der Hochschule Furtwangen. Dabei sollte in 52 Stunden ein Spiel entwickelt werden.  Der Code ist damit Quick & Dirty entstand. Dennoch viel Spaß beim spielen. 
+Dieses Spiel entstand im Rahmen des GameJam 2014 an der Hochschule Furtwangen. Dabei sollte in 52 Stunden ein Spiel entwickelt werden.  Der Code ist damit Quick & Dirty entstand. Dennoch viel Spaß beim Spielen. 
 
 ## Installation
 Es liegt ein Ant-Script bei. Nur unter Windows lauffähig!
+
+### Linux
+Stand 17.Januar 2021: Mit AdoptOpenJDK8 läuft es auch tatsächlich noch unter Linux (Ubuntu 18.04). 
 
 ## Team
 
@@ -16,7 +19,7 @@ Es liegt ein Ant-Script bei. Nur unter Windows lauffähig!
     Felix G�hr
     Maximilian Noppel
 
-## Licences.txt:
+## Licences
 
 This game uses the following sounds from freesound.org:
 
